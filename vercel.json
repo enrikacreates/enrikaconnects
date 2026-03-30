@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/corporate-experience-menu/?", "dest": "/corporate-experience-menu/index.html" }
+  ]
+}

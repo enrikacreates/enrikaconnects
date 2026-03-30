@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience Menu | Enrika Connects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FAF7F2;--cream-dark:#F0EBE3;--charcoal:#2A2522;--charcoal-light:#4A4441;--coral:#E07A5F;--coral-light:#F4A68E;--sage:#7D8B6A;--warm-white:#FFFCF7;--fd:'Instrument Serif',Georgia,serif;--fb:'DM Sans',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--fb);background:var(--cream);color:var(--charcoal);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,247,242,.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(42,37,34,.08)}
+    nav a.nn{font-family:var(--fd);font-size:1.25rem;color:var(--charcoal);text-decoration:none}
+    nav a.nc{font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;padding:.6rem 1.5rem;border:1.5px solid var(--charcoal);border-radius:100px;transition:all .3s}
+    nav a.nc:hover{background:var(--charcoal);color:var(--cream)}
+
+    /* HERO */
+    .hero{padding:10rem 2rem 5rem;text-align:center;background:var(--cream)}
+    .hero-label{font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:1.5rem}
+    .hero h1{font-family:var(--fd);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;line-height:1.1;max-width:700px;margin:0 auto 2rem}
+    .hero h1 em{font-style:italic;color:var(--coral)}
+    .hero p{font-size:1.1rem;font-weight:300;line-height:1.8;color:var(--charcoal-light);max-width:600px;margin:0 auto 1rem}
+    .hero .note{font-size:.9rem;font-style:italic;color:var(--sage);max-width:500px;margin:2rem auto 0}
+
+    /* SECTION */
+    .section{padding:5rem 2rem}
+    .section-inner{max-width:900px;margin:0 auto}
+    .section-label{font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem}
+    .section-heading{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;line-height:1.2;margin-bottom:1rem}
+    .section-heading em{font-style:italic;color:var(--coral)}
+    .section-body{font-size:1rem;font-weight:300;line-height:1.8;color:var(--charcoal-light);margin-bottom:1.5rem}
+
+    /* DIVIDER */
+    .divider{width:60px;height:2px;background:var(--coral-light);margin:0 auto;opacity:.5}
+
+    /* EXPERIENCE CARDS */
+    .exp-grid{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:4rem}
+
+    .exp-card{background:var(--warm-white);border-radius:20px;padding:3rem;box-shadow:0 4px 24px rgba(42,37,34,.06);transition:transform .3s,box-shadow .3s;border:1px solid rgba(42,37,34,.04)}
+    .exp-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(42,37,34,.1)}
+
+    .exp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+    .exp-pillar{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--warm-white);background:var(--coral);padding:.3rem .8rem;border-radius:100px}
+    .exp-pillar.move{background:var(--coral)}
+    .exp-pillar.connect{background:var(--sage)}
+    .exp-pillar.play{background:#C17B3A}
+    .exp-pillar.create{background:var(--charcoal-light)}
+    .exp-pillar.combo{background:var(--charcoal);font-size:.6rem}
+    .exp-time{font-size:.8rem;font-weight:400;color:var(--charcoal-light)}
+
+    .exp-title{font-family:var(--fd);font-size:1.8rem;font-weight:400;margin-bottom:.75rem;line-height:1.2}
+    .exp-brief{font-size:1rem;font-weight:300;line-height:1.8;color:var(--charcoal-light);margin-bottom:1.5rem}
+
+    .exp-walkthrough{background:var(--cream);border-radius:12px;padding:1.5rem 2rem;margin-bottom:1.5rem}
+    .exp-walkthrough-label{font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:.75rem}
+    .exp-walkthrough p{font-size:.9rem;font-weight:300;line-height:1.75;color:var(--charcoal-light);margin-bottom:.5rem}
+    .exp-walkthrough p:last-child{margin-bottom:0}
+
+    .exp-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    @media(max-width:600px){.exp-row{grid-template-columns:1fr}}
+
+    .exp-box{padding:0}
+    .exp-box-label{font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:.5rem}
+    .exp-box p{font-size:.9rem;font-weight:300;line-height:1.7;color:var(--charcoal-light)}
+
+    .exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+    .exp-tag{font-size:.72rem;font-weight:400;padding:.3rem .7rem;border:1px solid rgba(42,37,34,.12);border-radius:100px;color:var(--charcoal-light)}
+
+    .exp-aha{background:var(--charcoal);border-radius:12px;padding:1.25rem 1.75rem;margin-top:1.5rem}
+    .exp-aha-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-light);margin-bottom:.4rem}
+    .exp-aha p{font-family:var(--fd);font-size:1.05rem;font-style:italic;color:rgba(250,247,242,.8);line-height:1.6}
+
+    /* HOW IT WORKS */
+    .how-section{background:var(--charcoal);color:var(--cream);padding:5rem 2rem}
+    .how-section .section-label{color:var(--coral-light)}
+    .how-section .section-heading{color:var(--cream)}
+    .how-section .section-body{color:rgba(250,247,242,.7)}
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:800px;margin:2.5rem auto 0}
+    .how-item{text-align:center}
+    .how-num{font-family:var(--fd);font-size:2.5rem;color:var(--coral-light);margin-bottom:.5rem}
+    .how-title{font-family:var(--fd);font-size:1.1rem;color:var(--cream);margin-bottom:.4rem}
+    .how-desc{font-size:.85rem;font-weight:300;color:rgba(250,247,242,.6);line-height:1.6}
+    @media(max-width:600px){.how-grid{grid-template-columns:1fr;gap:1.5rem}}
+
+    /* STACKING NOTE */
+    .stack-section{background:var(--cream-dark);padding:4rem 2rem;text-align:center}
+    .stack-section p{font-size:1rem;font-weight:300;line-height:1.8;color:var(--charcoal-light);max-width:600px;margin:0 auto}
+    .stack-section p em{font-style:italic;color:var(--charcoal)}
+
+    /* CTA */
+    .cta{background:var(--charcoal);padding:6rem 2rem;text-align:center}
+    .cta .mission{font-family:var(--fd);font-size:clamp(1.1rem,2.5vw,1.4rem);font-style:italic;color:rgba(250,247,242,.4);max-width:450px;margin:0 auto 3rem;line-height:1.6}
+    .cta .section-label{color:var(--coral-light)}
+    .cta .section-heading{color:var(--cream);margin-bottom:1rem}
+    .cta p{font-size:1rem;font-weight:300;color:rgba(250,247,242,.65);max-width:480px;margin:0 auto 2rem;line-height:1.7}
+    .cta-btn{display:inline-block;font-size:.85rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);background:var(--cream);text-decoration:none;padding:1rem 2.5rem;border-radius:100px;transition:all .3s}
+    .cta-btn:hover{background:var(--coral);color:var(--warm-white);transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,122,95,.3)}
+    .cta-email{display:block;font-size:.85rem;font-weight:300;color:rgba(250,247,242,.4);margin-top:1.25rem}
+    .cta-email a{color:var(--coral-light);text-decoration:none}
+
+    /* FOOTER */
+    footer{background:var(--charcoal);border-top:1px solid rgba(250,247,242,.08);padding:1.5rem 2rem;text-align:center}
+    footer span{font-size:.7rem;font-weight:300;color:rgba(250,247,242,.3)}
+
+    /* ANIMATIONS */
+    .reveal{opacity:1;transform:translateY(0)}
+    .js .reveal{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s}
+    .js .reveal.vis{opacity:1;transform:translateY(0)}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem}
+      .hero{padding:8rem 1.5rem 4rem}
+      .section{padding:4rem 1.5rem}
+      .exp-card{padding:2rem 1.5rem}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nn">Enrika Connects</a>
+    <a href="#book" class="nc">Let's Talk</a>
+  </nav>
+
+  <header class="hero">
+    <p class="hero-label">Experience Menu</p>
+    <h1>Workshop Experiences That <em>Actually</em> Change the Room</h1>
+    <p>Each experience is a self-contained module designed to energize, connect, and create insight. They work as standalone sessions between your agenda items, or stack together for a half-day or full-day arc.</p>
+    <p class="note">All experiences adapt to 45 to 90 minutes. Detailed agendas available upon request.</p>
+  </header>
+
+  <div style="padding:2rem 0"><div class="divider"></div></div>
+
+  <!-- EXPERIENCES -->
+  <section class="section">
+    <div class="exp-grid">
+
+      <!-- 1: ROCK PAPER SCISSORS TOURNAMENT + SPEED STORIES -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar move">Move</span><span class="exp-pillar play">Play</span><span class="exp-pillar connect">Connect</span></div>
+          <span class="exp-time">45 to 60 min</span>
+        </div>
+        <h2 class="exp-title">The Welcome Session</h2>
+        <p class="exp-brief">A multi-part arrival experience designed to melt first-day jitters fast. Participants start with a quick room warm-up to get standing and chatting, then launch into a Rock Paper Scissors tournament that turns the entire room into a cheering, laughing, high-fiving crowd within minutes. Once the energy is cracked open, they rotate through rapid-fire micro-story exchanges that build real connection. Perfect for a virtual team meeting face-to-face for the first time.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Part 1 | Room Warm-Up (10 min):</strong> A guided social warm-up that gets everyone on their feet, moving around the room, and chatting with new faces through quick, fun, low-pressure prompts.</p>
+          <p><strong>Part 2 | Rock Paper Scissors Tournament (15 min):</strong> Pairs face off. Loser becomes the winner's biggest fan and follows them to the next round, cheering them on. By the final round, the entire room is split into two roaring crowds backing their champion. Pure energy. Pure joy. Zero awkwardness remaining.</p>
+          <p><strong>Part 3 | Speed Stories (20 min):</strong> Now that the room is wide open, pairs swap micro-stories using fun, unexpected prompts. 2 minutes each. Bell rings. Rotate. After a full round, the person who can recall the most stories wins retreat swag.</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>A room full of people who went from nervous strangers to "I can't believe how much fun that was" in under an hour. Real connections with 4 to 6 teammates. And the recall challenge proves the point: we remember stories. We forget agendas.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>Play reduces the social threat response that makes us guarded around new people. When adults play together, oxytocin and endorphins increase while cortisol decreases, literally creating the neurochemical conditions for trust. The RPS tournament does in 5 minutes what most icebreakers take 30 to accomplish.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">First-Day Energy</span>
+          <span class="exp-tag">Connection</span>
+          <span class="exp-tag">Trust-Building</span>
+          <span class="exp-tag">Active Listening</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"I was dreading the icebreaker. Instead I just cheered for someone I met 30 seconds ago like we've been friends for years."</p>
+        </div>
+      </div>
+
+      <!-- 2: STACK THE HATS RACE -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar play">Play</span></div>
+          <span class="exp-time">45 to 60 min</span>
+        </div>
+        <h2 class="exp-title">Stack the Hats Race</h2>
+        <p class="exp-brief">A high-energy team relay with a hidden lesson baked in. Teams race to stack colorful hats on a runner's head and deliver them across the room. Pure chaos, pure laughter, and a debrief that will change how the team thinks about workload.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Setup:</strong> Teams of 7 to 10. Each team has 12 colorful hats. The instructions: stack all 12 hats on the lead runner's head, have them cross the room, and deposit the hats (without hands!) into a collection box. Then the next runner goes.</p>
+          <p><strong>The Race:</strong> Teams scramble. Hats fall. Laughter erupts. Some teams struggle through one-person-carries-all-the-hats.</p>
+          <p><strong>The Kicker:</strong> The instructions never said one person has to carry all the hats. The teams that figure out they can divide the hats across all runners, help each other suit up, and cross together... win every time.</p>
+          <p><strong>The Debrief:</strong> "How many of you assumed that you had to carry all the hats all by yourself? How often does that happen at work?"</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>A visceral, lived-in understanding that sharing the load wins. Plus the memory of watching a colleague try to balance 12 hats while speed-walking. That image lasts forever.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>Play reduces the social threat response that makes us guarded around new people. When adults play together, oxytocin and endorphins increase while cortisol decreases, literally creating the neurochemical conditions for trust and collaboration.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">Teamwork</span>
+          <span class="exp-tag">Assumptions</span>
+          <span class="exp-tag">Workload Distribution</span>
+          <span class="exp-tag">Friendly Competition</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"We've been trying to carry all the hats all by ourselves. What would it look like to share the load and cross the finish line together?"</p>
+        </div>
+      </div>
+
+      <!-- 3: MORE PLAY IN YOUR DAY -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar play">Play</span><span class="exp-pillar move">Move</span></div>
+          <span class="exp-time">60 to 90 min</span>
+        </div>
+        <h2 class="exp-title">More Play in Your Day</h2>
+        <p class="exp-brief">An interactive workshop exploring why adults stop playing, what it costs us, and how to bring micro-moments of play back into daily life. Participants build a personal "Pocket Playlist" of play they can integrate into their workday immediately.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Open:</strong> Small group connection. "Why was it important for you to be in this session today?"</p>
+          <p><strong>Explore:</strong> What did play look like for you as a kid? What happened to it? What stops you from playing now?</p>
+          <p><strong>Story:</strong> Enrika shares her own journey from creative kid to hustle culture to buying a skateboard at 40 and rediscovering micro-play between meetings.</p>
+          <p><strong>Science:</strong> The research on why play builds resilience, reduces stress, and increases performance. Not a luxury. A strategy.</p>
+          <p><strong>Move:</strong> A guided movement break. Noticing what it feels like to play in your body again.</p>
+          <p><strong>Build:</strong> Participants create their personal Pocket Playlist, a menu of micro-play moments across categories: physical, creative, solo, social, nature, adventure, micro-moments.</p>
+          <p><strong>Close:</strong> Now & Later candies as a takeaway. Invest in your future while living in the joy of today.</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>A personal Pocket Playlist of play ideas to explore between meetings, with friends, family, and colleagues. Practical strategies for resilience and levity they can use starting tomorrow.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>The National Institute for Play found that adult play activates neural pathways that directly mitigate stress. For a team where burnout risk is flagged, play isn't an escape from work. It's the fuel that makes work sustainable.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">Resilience</span>
+          <span class="exp-tag">Burnout Prevention</span>
+          <span class="exp-tag">Personal Sustainability</span>
+          <span class="exp-tag">Tangible Takeaway</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"Play isn't the opposite of work. It's the fuel that makes work sustainable. And I already know how to do it. I just stopped giving myself permission."</p>
+        </div>
+      </div>
+
+      <!-- 4: DRAW A BEAUTIFUL VISION -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar create">Create</span><span class="exp-pillar play">Play</span></div>
+          <span class="exp-time">60 to 90 min</span>
+        </div>
+        <h2 class="exp-title">Draw a Beautiful Vision</h2>
+        <p class="exp-brief">A playful, metaphor-rich team art challenge that makes the invisible weight of daily life visible, then removes it. Two rounds of collaborative drawing reveal what becomes possible when we step out of the noise and create with clarity.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Setup:</strong> Teams of 5 to 7. Each person gets a small canvas on a string around their neck and markers.</p>
+          <p><strong>The Loading:</strong> A "step in" exercise. "Who here is a parent? Step in and add a scarf." "Who volunteers? Add beads." "Who has a big product due this quarter?" Scarves, hats, beads, and material pile on, representing all the roles and responsibilities competing for attention.</p>
+          <p><strong>Round 1:</strong> Teams try to draw a collaborative mural across all their canvases. But they can barely see their own canvas through the costume chaos. The result: scribbles. Fragmented. Disconnected.</p>
+          <p><strong>Round 2:</strong> Everything comes off. Clear view. Shorter time. Same teams. This time the mural is cohesive, beautiful, intentional.</p>
+          <p><strong>The Debrief:</strong> "Was it easier? How did it feel?" Then: "This retreat IS Round 2. You just stepped out of the noise. What do you want to see clearly while you're here?"</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>A lived-in understanding of what becomes possible when we make space to think and create clearly. Plus a visual artifact: two canvases showing the before and after. The contrast speaks for itself.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>Cognitive load theory shows that when we carry too many competing demands, our capacity for creative and strategic thinking drops dramatically. This exercise makes that invisible load physically visible, then removes it, so participants feel the difference in their bodies, not just their heads.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">Clarity</span>
+          <span class="exp-tag">Creative Collaboration</span>
+          <span class="exp-tag">Burnout Awareness</span>
+          <span class="exp-tag">Team Vision</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"I've been trying to draw a beautiful vision while buried under 12 scarves. No wonder it looks like scribbles. This weekend, the scarves are off."</p>
+        </div>
+      </div>
+
+      <!-- 5: MEANINGFUL MOMENTS MAP -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar create">Create</span><span class="exp-pillar connect">Connect</span></div>
+          <span class="exp-time">60 to 90 min</span>
+        </div>
+        <h2 class="exp-title">Meaningful Moments Map</h2>
+        <p class="exp-brief">A reflective personal development exercise where participants map their proudest moments across their life, discover the pattern, and name their "superpower DNA." Then they share it with peers and explore how their combined strengths could collide.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Map:</strong> Large paper divided into 3 life chapters (age ranges). Participants mark their proudest moments in each chapter.</p>
+          <p><strong>Discover:</strong> "What do these moments have in common? What skills, strengths, or qualities showed up again and again? Name your superpower."</p>
+          <p><strong>Share:</strong> Groups of 3 share their discoveries. Peers affirm and reflect back what they see.</p>
+          <p><strong>Collide:</strong> "How are your superpowers similar? Different? How might they combine to be even greater?"</p>
+          <p><strong>Optional Extension (+30 min):</strong> Teams build a collaborative creation (clay, art supplies) representing their combined superpowers. Polaroid photos for the memory wall.</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>A named superpower grounded in their own real experiences. Not a personality type assigned by a quiz. A pattern they discovered themselves. Plus a new appreciation for what their teammates uniquely bring.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>Gallup research shows people who use their strengths daily are 6x more likely to be engaged at work. But most people can't name their strengths because they've never been asked to look for the pattern across their whole life, not just their current role.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">Self-Awareness</span>
+          <span class="exp-tag">Strengths Discovery</span>
+          <span class="exp-tag">Team Appreciation</span>
+          <span class="exp-tag">Personal Development</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"I've had the same superpower my whole life. I just never named it. And now I can see how to bring more of it to work."</p>
+        </div>
+      </div>
+
+      <!-- 6: WALK + TALK -->
+      <div class="exp-card reveal">
+        <div class="exp-top">
+          <div style="display:flex;gap:.4rem"><span class="exp-pillar move">Move</span><span class="exp-pillar connect">Connect</span></div>
+          <span class="exp-time">30 to 45 min</span>
+        </div>
+        <h2 class="exp-title">Walk + Talk (Story Prompt Edition)</h2>
+        <p class="exp-brief">Facilitated walking pairs outdoors with curated story prompts. Movement unlocks conversation in ways sitting never can. Especially powerful for remote teammates having their first real conversation without a screen between them.</p>
+
+        <div class="exp-walkthrough">
+          <p class="exp-walkthrough-label">How It Flows</p>
+          <p><strong>Pair up:</strong> Participants get a partner (ideally someone they don't work with daily) and a story prompt card.</p>
+          <p><strong>Walk:</strong> 8 to 10 minutes of walking and sharing. Side-by-side. No eye-contact pressure.</p>
+          <p><strong>Switch:</strong> New partner, new prompt. Repeat 2 to 3 times.</p>
+          <p><strong>Return:</strong> Brief whole-group reflection. "What surprised you?"</p>
+        </div>
+
+        <div class="exp-row">
+          <div class="exp-box">
+            <p class="exp-box-label">Participants Walk Away With</p>
+            <p>Deeper connections with 3 to 4 teammates in 30 minutes than months of Slack messages could produce. Often cited as the moment the offsite became real.</p>
+          </div>
+          <div class="exp-box">
+            <p class="exp-box-label">Why This Works</p>
+            <p>Bilateral stimulation (the alternating left-right movement of walking) activates both brain hemispheres simultaneously, improving emotional processing. Side-by-side positioning removes confrontational eye contact, making people share more freely. Therapists have known this for decades.</p>
+          </div>
+        </div>
+
+        <div class="exp-tags">
+          <span class="exp-tag">Connection</span>
+          <span class="exp-tag">Mental Reset</span>
+          <span class="exp-tag">Introvert-Friendly</span>
+          <span class="exp-tag">Nature</span>
+        </div>
+
+        <div class="exp-aha">
+          <p class="exp-aha-label">The Aha</p>
+          <p>"I just learned more about my colleague in 10 minutes of walking than in a year of video calls."</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STACKING NOTE -->
+  <section class="stack-section">
+    <div class="divider" style="margin-bottom:2.5rem"></div>
+    <p>Every experience works as a standalone session. But they're designed to <em>stack</em>. An opener that cracks the room open, a deeper session that builds on that energy, and a closer that sends people home with something tangible. I design the flow around your specific schedule and goals.</p>
+    <div class="divider" style="margin-top:2.5rem"></div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-heading" style="color:var(--cream)">Simple as <em>1, 2, 3.</em></h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-item">
+        <p class="how-num">01</p>
+        <h3 class="how-title">Choose Your Experiences</h3>
+        <p class="how-desc">Pick the sessions that resonate. Mix and match, or let me recommend a flow based on your goals.</p>
+      </div>
+      <div class="how-item">
+        <p class="how-num">02</p>
+        <h3 class="how-title">We Design the Flow</h3>
+        <p class="how-desc">I'll build a custom agenda that fits your schedule, group size, and the outcome you're after.</p>
+      </div>
+      <div class="how-item">
+        <p class="how-num">03</p>
+        <h3 class="how-title">I Show Up and Bring It</h3>
+        <p class="how-desc">Your team moves, connects, plays, and creates. You watch the room come alive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="book">
+    <p class="mission">I create storytelling experiences that inspire hope and ignite purpose.</p>
+    <p class="section-label">Let's Go</p>
+    <h2 class="section-heading" style="color:var(--cream)">See something that fits?</h2>
+    <p>Let's talk about which experiences would work best for your team, your schedule, and your goals. I'll put together a custom agenda for your review, along with costs and finalization details.</p>
+    <a href="https://tidycal.com/enrika/30-minute-meeting" class="cta-btn" target="_blank">Book a Discovery Call</a>
+    <span class="cta-email">Or reach out at <a href="mailto:hello@enrikaconnects.com">hello@enrikaconnects.com</a></span>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Enrika Greathouse | enrikaconnects.com</span>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); observer.unobserve(e.target); }});
+    }, {threshold: 0.15});
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+  </script>
