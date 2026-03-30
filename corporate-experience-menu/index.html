@@ -145,7 +145,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar move">Move</span><span class="exp-pillar play">Play</span><span class="exp-pillar connect">Connect</span></div>
           <span class="exp-time">45 to 60 min</span>
         </div>
-        <h2 class="exp-title">The Welcome Session</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">01</span>The Welcome Session</h2>
         <p class="exp-brief">A multi-part arrival experience designed to melt first-day jitters fast. Participants start with a quick room warm-up to get standing and chatting, then launch into a Rock Paper Scissors tournament that turns the entire room into a cheering, laughing, high-fiving crowd within minutes. Once the energy is cracked open, they rotate through rapid-fire micro-story exchanges that build real connection. Perfect for a virtual team meeting face-to-face for the first time.</p>
 
         <div class="exp-walkthrough">
@@ -185,7 +185,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar play">Play</span></div>
           <span class="exp-time">45 to 60 min</span>
         </div>
-        <h2 class="exp-title">Stack the Hats Race</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">02</span>Stack the Hats Race</h2>
         <p class="exp-brief">A high-energy team relay with a hidden lesson baked in. Teams race to stack colorful hats on a runner's head and deliver them across the room. Pure chaos, pure laughter, and a debrief that will change how the team thinks about workload.</p>
 
         <div class="exp-walkthrough">
@@ -226,7 +226,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar play">Play</span><span class="exp-pillar move">Move</span></div>
           <span class="exp-time">60 to 90 min</span>
         </div>
-        <h2 class="exp-title">More Play in Your Day</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">03</span>More Play in Your Day</h2>
         <p class="exp-brief">An interactive workshop exploring why adults stop playing, what it costs us, and how to bring micro-moments of play back into daily life. Participants build a personal "Pocket Playlist" of play they can integrate into their workday immediately.</p>
 
         <div class="exp-walkthrough">
@@ -270,7 +270,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar create">Create</span><span class="exp-pillar play">Play</span></div>
           <span class="exp-time">60 to 90 min</span>
         </div>
-        <h2 class="exp-title">Draw a Beautiful Vision</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">04</span>Draw a Beautiful Vision</h2>
         <p class="exp-brief">A playful, metaphor-rich team art challenge that makes the invisible weight of daily life visible, then removes it. Two rounds of collaborative drawing reveal what becomes possible when we step out of the noise and create with clarity.</p>
 
         <div class="exp-walkthrough">
@@ -312,7 +312,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar create">Create</span><span class="exp-pillar connect">Connect</span></div>
           <span class="exp-time">60 to 90 min</span>
         </div>
-        <h2 class="exp-title">Meaningful Moments Map</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">05</span>Meaningful Moments Map</h2>
         <p class="exp-brief">A reflective personal development exercise where participants map their proudest moments across their life, discover the pattern, and name their "superpower DNA." Then they share it with peers and explore how their combined strengths could collide.</p>
 
         <div class="exp-walkthrough">
@@ -354,7 +354,7 @@
           <div style="display:flex;gap:.4rem"><span class="exp-pillar move">Move</span><span class="exp-pillar connect">Connect</span></div>
           <span class="exp-time">30 to 45 min</span>
         </div>
-        <h2 class="exp-title">Walk + Talk (Story Prompt Edition)</h2>
+        <h2 class="exp-title"><span style="color:var(--coral);font-size:.6em;letter-spacing:.1em;font-family:var(--fb);vertical-align:middle;margin-right:.5rem">06</span>Walk + Talk (Story Prompt Edition)</h2>
         <p class="exp-brief">Facilitated walking pairs outdoors with curated story prompts. Movement unlocks conversation in ways sitting never can. Especially powerful for remote teammates having their first real conversation without a screen between them.</p>
 
         <div class="exp-walkthrough">
@@ -431,7 +431,7 @@
     <h2 class="section-heading" style="color:var(--cream)">See something that fits?</h2>
     <p>Let's talk about which experiences would work best for your team, your schedule, and your goals. I'll put together a custom agenda for your review, along with costs and finalization details.</p>
     <a href="https://tidycal.com/enrika/30-minute-meeting" class="cta-btn" target="_blank">Book a Discovery Call</a>
-    <span class="cta-email">Or reach out at <a href="mailto:hello@enrikaconnects.com">hello@enrikaconnects.com</a></span>
+    <span class="cta-email">Or reach out at <a href="mailto:enrika@enrikaconnects.com">enrika@enrikaconnects.com</a></span>
   </section>
 
   <footer>
@@ -442,6 +442,8 @@
     document.documentElement.classList.add('js');
     var observer = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); observer.unobserve(e.target); }});
-    }, {threshold: 0.15});
+    }, {threshold: 0.15, rootMargin: '0px 0px -50px 0px'});
     document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
   </script>
+</body>
+</html>
