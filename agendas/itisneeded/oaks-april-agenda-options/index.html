@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meaningful Moments Map | Enrika Connects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#FAF7F2;--cream-dark:#F0EBE3;--charcoal:#2A2522;--charcoal-light:#4A4441;--coral:#E07A5F;--coral-light:#F4A68E;--sage:#7D8B6A;--warm-white:#FFFCF7;--fd:'Instrument Serif',Georgia,serif;--fb:'DM Sans',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{font-size:16px}
+    body{font-family:var(--fb);background:var(--cream);color:var(--charcoal);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,247,242,.95);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(42,37,34,.08)}
+    nav a.nn{font-family:var(--fd);font-size:1.25rem;color:var(--charcoal);text-decoration:none}
+    nav a.nc{font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;padding:.6rem 1.5rem;border:1.5px solid var(--charcoal);border-radius:100px;transition:all .3s}
+    nav a.nc:hover{background:var(--charcoal);color:var(--cream)}
+
+    .page{max-width:750px;margin:0 auto;padding:7rem 2.5rem 4rem}
+
+    /* HEADER */
+    .header{text-align:center;margin-bottom:3.5rem}
+    .header-label{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem}
+    .header h1{font-family:var(--fd);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:1rem}
+    .header h1 em{font-style:italic;color:var(--coral)}
+    .header-sub{font-size:1rem;font-weight:300;line-height:1.7;color:var(--charcoal-light);max-width:550px;margin:0 auto}
+
+    /* DETAILS BAR */
+    .details-bar{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid rgba(42,37,34,.1);border-bottom:1px solid rgba(42,37,34,.1);margin-bottom:3rem}
+    .detail-item{text-align:center}
+    .detail-item .label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.2rem}
+    .detail-item .value{font-size:.9rem;font-weight:400;color:var(--charcoal)}
+
+    /* SECTIONS */
+    .section{margin-bottom:3rem}
+    .section-label{font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.75rem}
+    .section h2{font-family:var(--fd);font-size:1.6rem;font-weight:400;line-height:1.3;margin-bottom:1rem}
+    .section h2 em{font-style:italic;color:var(--coral)}
+    .section p{font-size:.95rem;font-weight:300;line-height:1.8;color:var(--charcoal-light);margin-bottom:1rem}
+
+    /* FLOW STEPS */
+    .flow{display:flex;flex-direction:column;gap:0}
+    .flow-step{display:grid;grid-template-columns:60px 1fr;gap:0;align-items:start;position:relative;padding-bottom:1.5rem}
+    .flow-step:last-child{padding-bottom:0}
+    .flow-step:last-child .flow-line{display:none}
+    .flow-dot-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
+    .flow-dot{width:32px;height:32px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-family:var(--fb);font-size:.65rem;font-weight:500;color:var(--warm-white);letter-spacing:.05em;position:relative;z-index:2}
+    .flow-line{position:absolute;top:32px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% - 16px);background:var(--coral-light);opacity:.3;z-index:1}
+    .flow-content{padding-top:.35rem}
+    .flow-title{font-family:var(--fd);font-size:1.05rem;font-weight:400;margin-bottom:.25rem;color:var(--charcoal)}
+    .flow-desc{font-size:.85rem;font-weight:300;line-height:1.7;color:var(--charcoal-light)}
+
+    /* TAKEAWAYS */
+    .takeaways{background:var(--warm-white);border-radius:16px;padding:2rem 2.25rem;border:1px solid rgba(42,37,34,.05);margin-bottom:3rem}
+    .takeaway-item{display:flex;gap:.75rem;margin-bottom:1rem;align-items:flex-start}
+    .takeaway-item:last-child{margin-bottom:0}
+    .takeaway-check{color:var(--coral);font-size:1.1rem;line-height:1.5;flex-shrink:0}
+    .takeaway-text{font-size:.9rem;font-weight:300;line-height:1.7;color:var(--charcoal-light)}
+
+    /* OPTIONS */
+    .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
+    @media(max-width:600px){.options-grid{grid-template-columns:1fr}}
+    .option-card{background:var(--warm-white);border-radius:16px;padding:2rem;border:1px solid rgba(42,37,34,.05)}
+    .option-card.recommended{border:2px solid var(--coral)}
+    .option-badge{display:inline-block;font-size:.55rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--warm-white);background:var(--coral);padding:.2rem .6rem;border-radius:100px;margin-bottom:.75rem}
+    .option-title{font-family:var(--fd);font-size:1.2rem;margin-bottom:.5rem}
+    .option-desc{font-size:.85rem;font-weight:300;line-height:1.7;color:var(--charcoal-light);margin-bottom:1rem}
+    .option-details{font-size:.8rem;font-weight:300;line-height:1.65;color:var(--sage)}
+    .option-details strong{color:var(--charcoal);font-weight:500}
+
+    /* AHA */
+    .aha{background:var(--charcoal);border-radius:16px;padding:2rem 2.25rem;margin-bottom:3rem;text-align:center}
+    .aha-label{font-size:.55rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--coral-light);margin-bottom:.5rem}
+    .aha p{font-family:var(--fb);font-size:1.05rem;font-weight:400;font-style:normal;color:rgba(250,247,242,.97);line-height:1.7;max-width:500px;margin:0 auto}
+
+    /* SCIENCE */
+    .science{background:var(--cream-dark);border-radius:16px;padding:1.75rem 2rem;margin-bottom:3rem}
+    .science p{font-size:.85rem;font-weight:300;line-height:1.7;color:var(--charcoal-light);margin-bottom:0}
+    .science strong{color:var(--charcoal);font-weight:500}
+
+    /* DIVIDER */
+    .divider{width:50px;height:2px;background:var(--coral-light);margin:0 auto 3rem;opacity:.4}
+
+    /* FOOTER */
+    .footer{text-align:center;padding-top:2rem;border-top:1px solid rgba(42,37,34,.1)}
+    .footer-name{font-family:var(--fd);font-size:1.1rem;color:var(--charcoal);margin-bottom:.25rem}
+    .footer-title{font-size:.8rem;font-weight:400;color:var(--charcoal-light);margin-bottom:.15rem}
+    .footer-url{font-size:.8rem;font-weight:300;color:var(--coral)}
+    .footer-mission{font-family:var(--fd);font-size:.85rem;font-style:italic;color:var(--charcoal-light);opacity:.5;margin-top:1rem}
+
+    @media print{
+      body{background:white}
+      nav{display:none}
+      .page{padding:2rem 1.5rem}
+      .option-card.recommended{border:2px solid var(--coral)}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nn">Enrika Connects</a>
+    <a href="mailto:enrika@enrikaconnects.com" class="nc">Let's Talk</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <p class="header-label">Session Overview</p>
+      <h1>Meaningful <em>Moments</em> Map</h1>
+      <p class="header-sub">A personal strengths discovery experience where participants uncover the pattern running through their proudest moments, name their superpower, and connect it to how they show up at work and with their team.</p>
+    </div>
+
+    <!-- DETAILS BAR -->
+    <div class="details-bar">
+      <div class="detail-item">
+        <p class="label">Date</p>
+        <p class="value">Wednesday, April 15</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Time</p>
+        <p class="value">1:30 to 3:00pm</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Duration</p>
+        <p class="value">90 Minutes</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Participants</p>
+        <p class="value">45 People</p>
+      </div>
+      <div class="detail-item">
+        <p class="label">Format</p>
+        <p class="value">Interactive</p>
+      </div>
+    </div>
+
+    <!-- THE EXPERIENCE -->
+    <div class="section">
+      <p class="section-label">The Experience</p>
+      <h2>No personality tests. No frameworks someone else invented. <em>Your own real life.</em></h2>
+      <p>Participants map their proudest moments across three chapters of their life, look for the pattern, and name the unique quality that's been with them all along. Then in small groups, they share their discoveries, see each other's strengths, and explore how their combined superpowers could collide and become even greater.</p>
+      <p>It's personal development grounded in real experience, not a quiz. And the insights come from the participants themselves, not a facilitator telling them who they are.</p>
+    </div>
+
+    <!-- SESSION FLOW -->
+    <div class="section">
+      <p class="section-label">How It Flows</p>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-dot-wrap"><div class="flow-dot">01</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <p class="flow-title">Arrive + Connect</p>
+            <p class="flow-desc">Small group warm-up. Participants settle in and connect with the people near them through a quick, positive prompt.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-dot-wrap"><div class="flow-dot">02</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <p class="flow-title">Map Your Moments</p>
+            <p class="flow-desc">Each person divides a large piece of paper into three life chapters and maps their proudest moments across each one. Quiet reflection with background music.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-dot-wrap"><div class="flow-dot">03</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <p class="flow-title">Find the Pattern</p>
+            <p class="flow-desc">Guided prompts help participants look across their moments and name the skill, quality, or "superpower DNA" that runs through all of them.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-dot-wrap"><div class="flow-dot">04</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <p class="flow-title">Share + Discover Together</p>
+            <p class="flow-desc">In groups of 3, participants share their maps and superpowers. Peers affirm what they see, compare strengths, and explore how their combined powers could create something greater.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-dot-wrap"><div class="flow-dot">05</div><div class="flow-line"></div></div>
+          <div class="flow-content">
+            <p class="flow-title">Reflect + Commit</p>
+            <p class="flow-desc">Whole group reflection. Each participant commits to one way they'll bring more of their superpower into their work this quarter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TAKEAWAYS -->
+    <div class="section">
+      <p class="section-label">What Participants Walk Away With</p>
+    </div>
+    <div class="takeaways">
+      <div class="takeaway-item">
+        <span class="takeaway-check">&#10003;</span>
+        <p class="takeaway-text">A named personal superpower grounded in their own real experiences, not assigned by a test</p>
+      </div>
+      <div class="takeaway-item">
+        <span class="takeaway-check">&#10003;</span>
+        <p class="takeaway-text">A visual map of their proudest moments across their life that they can keep</p>
+      </div>
+      <div class="takeaway-item">
+        <span class="takeaway-check">&#10003;</span>
+        <p class="takeaway-text">Deeper appreciation for the unique strengths their teammates bring</p>
+      </div>
+      <div class="takeaway-item">
+        <span class="takeaway-check">&#10003;</span>
+        <p class="takeaway-text">A concrete commitment to bring more of their superpower into their daily work</p>
+      </div>
+      <div class="takeaway-item">
+        <span class="takeaway-check">&#10003;</span>
+        <p class="takeaway-text">Real connection with colleagues through sharing something meaningful (not surface-level small talk)</p>
+      </div>
+    </div>
+
+    <!-- AHA -->
+    <div class="aha">
+      <p class="aha-label">The Aha Moment</p>
+      <p>The superpower was there all along, across every life chapter. Participants don't get assigned a type from a quiz. They discover the pattern themselves, name it, and see how to bring more of it to work.</p>
+    </div>
+
+    <!-- TWO OPTIONS -->
+    <div class="section">
+      <p class="section-label">Two Session Styles</p>
+      <h2>Choose the version that fits your <em>energy.</em></h2>
+      <p>Both versions follow the same core arc. The difference is how the session closes.</p>
+    </div>
+
+    <div class="options-grid">
+      <div class="option-card recommended">
+        <span class="option-badge">Recommended</span>
+        <h3 class="option-title">Option A: Reflective Arc</h3>
+        <p class="option-desc">The full 90 minutes focused on personal discovery, peer sharing, and whole-group reflection. Spacious. Every moment has room to breathe. Ends with a quiet commitment and group insights.</p>
+        <p class="option-details">
+          <strong>Vibe:</strong> Reflective, warm, spacious<br>
+          <strong>Closes with:</strong> Whole-group reflection and personal commitment<br>
+          <strong>Materials:</strong> Large paper, markers, colored pencils<br>
+          <strong>Best if:</strong> Your team is coming from heavier strategy sessions and needs breathing room
+        </p>
+      </div>
+      <div class="option-card">
+        <h3 class="option-title">Option B: Creative Breakout</h3>
+        <p class="option-desc">Same discovery arc, slightly compressed to make room for a hands-on creative extension. Groups build a collaborative "Super Creation" representing their combined superpowers using art supplies, then present it gallery-walk style. Higher energy. Produces a physical artifact.</p>
+        <p class="option-details">
+          <strong>Vibe:</strong> Energetic, playful, memorable<br>
+          <strong>Closes with:</strong> Gallery walk presentations and team photos<br>
+          <strong>Materials:</strong> Paper, markers, plus clay, craft supplies, Polaroid camera<br>
+          <strong>Best if:</strong> You want something the team will photograph, talk about, and remember at dinner
+        </p>
+      </div>
+    </div>
+
+    <div class="divider" style="margin-top:3rem"></div>
+
+    <!-- WHY THIS WORKS -->
+    <div class="science">
+      <p class="section-label" style="margin-bottom:.5rem">Why This Works</p>
+      <p><strong>Gallup research</strong> shows that people who use their strengths daily are <strong>6x more likely to be engaged at work</strong>, 3x more likely to report excellent quality of life, and 15% less likely to leave their company. But most people can't name their strengths because they've never been asked to look for the pattern across their whole life, not just their current role. This session gives them that opportunity.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="footer-name">Enrika Greathouse</p>
+      <p class="footer-title">Experience Designer</p>
+      <p class="footer-url">enrikaconnects.com</p>
+      <p class="footer-mission">"I create storytelling experiences that inspire hope and ignite purpose."</p>
+    </div>
+
+  </div>
+</body>
+</html>
