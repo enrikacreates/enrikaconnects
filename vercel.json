@@ -1,6 +1,6 @@
 {
   "routes": [
     { "src": "/corporate-experience-menu/?", "dest": "/corporate-experience-menu/index.html" },
-    { "src": "/agendas/itisneeded/oaks-april-agenda-options/?", "dest": "/agendas/itisneeded/oaks-april-agenda-options/index.html" }
+    { "src": "/agendas/thisisneeded/oaks-april-agenda-options/?", "dest": "/agendas/thisisneeded/oaks-april-agenda-options/index.html" }
   ]
 }
